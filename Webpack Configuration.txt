@@ -29,3 +29,25 @@ module.exports = {
 And lastly we can make a webpack script to test it. 
     "dev": "webpack-dev-server",
     "build": "webpack",
+
+CSS 
+=====
+
+1. Let's add basic CSS support to Webpack
+npm install css-loader style-loader --save-dev
+
+2. Import the style into your main JS file
+import "../styles/styles.css";
+
+3. A new addition to 
+module.exports = {
+     module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            } -- this tests for .css files and uses css-loader and style-loader for our CSS
+        ]
+    }
+}
+

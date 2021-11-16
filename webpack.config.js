@@ -8,5 +8,18 @@ module.exports = {
         filename: "bundled.js",
         path: path.resolve(__dirname, 'src'),
     },
-    mode: "development"
+    mode: "development",
+    watch: true,
+
+    // loaders
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    }
+
+    // plugins
 }
