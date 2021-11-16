@@ -12,3 +12,20 @@ DayTwo has SRC: js, scss, img, library
 After, we need to create our configuration file: webpack.config.js
 
 We also need to write some initial code to our config file. 
+
+4. We need to do some initial basic setup now. First, we create the path: const path = require("path");
+Then we create the initial module.exports = {} 
+module.exports = {
+	entry: {
+        main: path.resolve(__dirname, 'src/scripts/main.js')
+    },
+    output: {
+        filename: 'bundled.js', -- we can say [name].bundled.js if we want to here and it will use the entry name
+        path: path.resolve(__dirname, 'dist') -- we can change this to src if we don't want to send the file to a new folder.
+    },
+	mode: "development", //production
+}
+
+And lastly we can make a webpack script to test it. 
+    "dev": "webpack-dev-server",
+    "build": "webpack",
