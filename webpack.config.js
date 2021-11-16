@@ -8,7 +8,8 @@ module.exports = {
         filename: "bundled.js",
         path: path.resolve(__dirname, 'src'),
     },
-
+    
+    devtool: "inline-source-map",
     devServer: {
         static: path.join(__dirname, 'src'),
         hot: true,
