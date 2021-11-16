@@ -51,3 +51,19 @@ module.exports = {
     }
 }
 
+SCSS
+=========
+
+1. Let's add SCSS now to our Webpack
+npm install sass sass-loader
+
+2. We change the test name from .css to .scss, rename our styles.css to styles.scss, update the import in our main JS file and add a new loader to our webpack config.
+module: {
+    rules: [
+        {
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader']
+        }
+    ]
+}
+
