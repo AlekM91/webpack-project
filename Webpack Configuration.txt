@@ -67,3 +67,29 @@ module: {
     ]
 }
 
+Webpack Development Server
+=========================
+
+1. npm install webpack-dev-server --save-dev 
+
+2. Setting up a Development Tool
+
+2.1 Watch. We can make a watch script "watch": "webpack --watch" or set watch: true,  in our module.exports in case we don't want to use dev server
+
+2.2 Using Webpack Dev Server
+
+We setup a new object in our webpack.config
+devServer: {
+    static: path.join(__dirname, 'dist' -- or src depending),
+    open: true, -- so it opens our browser automatically
+    hot: true, -- this injects the css/js in the browsers memory without reloading
+    port: 3000,
+    host: '0.0.0.0' -- this allows devices on our network to view the website
+}
+
+3. Accept the hot module updates in our main.js file
+if(module.hot) {
+    module.hot.accept();
+}
+
+4. In our webpack.config we add an object called devtool:'inline-source-map' to track our errors when we bundle.

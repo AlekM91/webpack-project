@@ -8,8 +8,15 @@ module.exports = {
         filename: "bundled.js",
         path: path.resolve(__dirname, 'src'),
     },
+
+    devServer: {
+        static: path.join(__dirname, 'src'),
+        hot: true,
+        port: 3000,
+        host: '0.0.0.0'
+    },
+
     mode: "development",
-    watch: true,
 
     // loaders
     module: {
