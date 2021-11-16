@@ -1,0 +1,14 @@
+INITIAL STAGE
+=============================
+
+1. Start with a structure of "dist" and "src". Inside the "src" I have an App.js (or something), a favicon for the website, style folder for styles and a main style.css which will import all the other modules.
+
+DayTwo has SRC: js, scss, img, library
+
+2. npm init -y To instantly start our npm without answering the intro questions. The package.json file will help us manage all our dependencies.
+	- Here we can npm install lodash and npm install normalize.css
+
+3. To install Webpack, use npm install webpack webpack-cli --save-dev
+After, we need to create our configuration file: webpack.config.js
+
+We also need to write some initial code to our config file. 
