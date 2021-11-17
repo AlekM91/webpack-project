@@ -1,0 +1,17 @@
+body {
+    ::placeholder {
+      color: gray;
+    }
+  }
+
+.test-div {
+    background: url('/src/assets/images/batman.png');
+    background-size: cover;
+    width: 500px;
+    height: 500px;
+}
+
+img {
+    width: 500px;
+    height: 500px;
+}
