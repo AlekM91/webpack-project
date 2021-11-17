@@ -1,4 +1,4 @@
-INITIAL STAGE
+Initial Stage
 =============================
 
 1. Start with a structure of "dist" and "src". Inside the "src" I have an App.js (or something), a favicon for the website, style folder for styles and a main style.css which will import all the other modules.
@@ -93,3 +93,9 @@ if(module.hot) {
 }
 
 4. In our webpack.config we add an object called devtool:'inline-source-map' to track our errors when we bundle.
+
+Development Tools
+=================
+
+1. npm install normalize.css
+
