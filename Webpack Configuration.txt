@@ -98,4 +98,30 @@ Development Tools
 =================
 
 1. npm install normalize.css
+@import "normalize.css"; in main styles.scss
+
+2. npm install postcss postcss-loader --save-dev
+npm install autoprefixer --save-dev 
+module: {
+    rules: [
+        {
+            test: /\.scss$/i,
+            use: ['style-loader', 'css-loader', 'sass-loader',
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        postcssOptions: {
+                            plugins: [
+                                [
+                                    "autoprefixer"
+                                ]
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
 
