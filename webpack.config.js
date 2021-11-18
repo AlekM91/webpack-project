@@ -83,6 +83,16 @@ if(currentTask == "build") {
         ]
     }
     config.module.rules[0].use[0] = MiniCssExtractPlugin.loader
+    config.module.rules.push({
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+    })
     config.plugins.push(
         new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
         new WebpackManifestPlugin(),
