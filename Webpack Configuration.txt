@@ -171,3 +171,16 @@ config.output = {
 
 npm install mini-css-extract-plugin --save-dev
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+build: 
+config.module.rules[0].use[0] = MiniCssExtractPlugin.loader
+config.plugins.push(
+    new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
+)
+
+Minify: npm install css-minimizer-webpack-plugin --save-dev
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+optimization: 
+minimizer: [
+    new CssMinimizerPlugin()
+]
+

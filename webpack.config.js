@@ -1,6 +1,7 @@
 const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const config = {
     entry: {
@@ -57,11 +58,14 @@ if(currentTask == "build") {
     }
     config.mode = "production"
     config.optimization = {
-        splitChunks: {chunks: "all"}
+        splitChunks: {chunks: "all"},
+        minimizer: [
+            new CssMinimizerPlugin()
+        ]
     }
     config.module.rules[0].use[0] = MiniCssExtractPlugin.loader
     config.plugins.push(
-        new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'})
+        new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
     )
 }
 
