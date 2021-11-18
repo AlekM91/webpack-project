@@ -64,7 +64,6 @@ const config = {
     },
 
     // plugins
-    
     plugins: pages
 }
 
