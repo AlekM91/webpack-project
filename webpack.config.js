@@ -1,5 +1,6 @@
 const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
     entry: {
@@ -41,18 +42,27 @@ const config = {
                 ]
             }
         ]
-    }
+    },
 
     // plugins
+    plugins: []
 }
 
 if(currentTask == "build") {
     config.output = {
-        filename: "bundled.js",
+        filename: "[name].[chunkhash].js",
+        chunkFilename: "[name].[chunkhash].js",
         path: path.resolve(__dirname, 'dist'),
         clean: true
     }
     config.mode = "production"
+    config.optimization = {
+        splitChunks: {chunks: "all"}
+    }
+    config.module.rules[0].use[0] = MiniCssExtractPlugin.loader
+    config.plugins.push(
+        new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'})
+    )
 }
 
 module.exports = config;

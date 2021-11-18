@@ -150,3 +150,24 @@ if(currentTask == "build") {
     ...
 }
 module.exports = config;
+
+
+3. Optimization - download less code
+
+config.optimization = {
+    splitChunks: {chunks: "all"}
+} - This is for code we didn't write but we use life for example some lazy load library etc.
+
+Hash output for Build:
+config.output = {
+    filename: "[name].[chunkhash].js",
+    chunkFilename: "[name].[chunkhash].js",
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
+}
+
+4. Extract CSS
+=================
+
+npm install mini-css-extract-plugin --save-dev
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
