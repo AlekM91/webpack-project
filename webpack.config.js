@@ -2,6 +2,7 @@ const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: {
@@ -46,7 +47,9 @@ const config = {
     },
 
     // plugins
-    plugins: []
+    plugins: [
+        new HtmlWebpackPlugin({filename: 'index.html', template: './src/index.html'})
+    ]
 }
 
 if(currentTask == "build") {
