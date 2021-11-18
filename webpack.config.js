@@ -4,6 +4,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fse = require('fs-extra');
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+
+class RunAfterCompile {
+    apply(compiler) {
+        compiler.hooks.done.tap('Copy Images', function() {
+            fse.copySync('./src/assets/images', './dist/assets/images')
+        })
+    }
+}
 
 // 1 page only: plugins [new HtmlWebpackPlugin({filename: 'index.html', template: './src/index.html'})]
 const pages = fse.readdirSync('./src').filter(function(file) {
@@ -76,6 +85,8 @@ if(currentTask == "build") {
     config.module.rules[0].use[0] = MiniCssExtractPlugin.loader
     config.plugins.push(
         new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
+        new WebpackManifestPlugin(),
+        new RunAfterCompile()
     )
 }
 

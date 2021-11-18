@@ -199,4 +199,18 @@ const pages = fse.readdirSync('./src').filter(function(file) {
     return new HtmlWebpackPlugin({filename: page, template: `./src/${page}`})
 })
 
+webpack manifest plugin
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
+push into plugins to use it - new WebpackManifestPlugin() -- push it if you want to use it
+
+images: make a new plugin 
+class RunAfterCompile {
+    apply(compiler) {
+        compiler.hooks.done.tap('Copy Images', function() {
+            fse.copySync('./src/assets/images', './dist/assets/images')
+        })
+    }
+}
+Add the plugin in build
+
 
