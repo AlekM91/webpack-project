@@ -1,6 +1,7 @@
+const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
 
-module.exports = {
+const config = {
     entry: {
         main: path.resolve(__dirname, 'src/scripts/main.js')
     },
@@ -44,3 +45,14 @@ module.exports = {
 
     // plugins
 }
+
+if(currentTask == "build") {
+    config.output = {
+        filename: "bundled.js",
+        path: path.resolve(__dirname, 'dist'),
+        clean: true
+    }
+    config.mode = "production"
+}
+
+module.exports = config;

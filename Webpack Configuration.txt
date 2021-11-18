@@ -136,3 +136,17 @@ Basic structure
 @import "modules/site-footer";
 
 
+Production
+============
+1. First in our webpack config file we need to determine which script we ran, npm dev or build. To do that we use
+const currentTask = process.env.npm_lifecycle_event;
+
+2. There are multiple ways we can do that, but probably the easiest would be to make a config variable with everything we have in module.exports, set module.exports = config, and make an if statement for the build task and modify the config variable to apply for the build only
+
+config = {
+    entire module.exports here
+}
+if(currentTask == "build") {
+    ...
+}
+module.exports = config;
