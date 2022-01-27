@@ -1,21 +1,17 @@
 @import "normalize.css";
-
+@import "base/mini-reset";
 
 @import "base/variables";
 @import "utilities/functions";
 @import "base/grid";
 @import "base/mixins";
 
-
-@import "base/base";
 @import "base/global";
 @import "base/fonts";
 @import "base/typography";
 
-
 @import "utilities/colors";
 @import "utilities/utilities";
-
 
 @import "components/button";
 @import "components/card";
