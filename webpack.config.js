@@ -5,6 +5,11 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fse = require('fs-extra');
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+const glob = require('glob');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const PATHS = {
+    src: path.join(__dirname, 'src')
+}
 
 class RunAfterCompile {
     apply(compiler) {
@@ -45,8 +50,7 @@ const config = {
         rules: [
             {
                 test: /\.scss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader',
-                    {
+                use: ['style-loader', 'css-loader', {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
@@ -57,7 +61,7 @@ const config = {
                                 ]
                             }
                         }
-                    }
+                    }, 'sass-loader',
                 ]
             }
         ]
@@ -95,6 +99,9 @@ if(currentTask == "build") {
     config.plugins.push(
         new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
         new WebpackManifestPlugin(),
+        new PurgecssPlugin({
+            paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+        }),
         new RunAfterCompile()
     )
 }
