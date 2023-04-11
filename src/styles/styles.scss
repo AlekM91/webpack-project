@@ -26,3 +26,14 @@
 @import "layout/_footer";
 
 @import "pages/home";
+
+.test-wrapper {
+    height: 600px;
+    background: blue;
+
+    .box {
+        height: 300px;
+        color: white;
+        background: red;
+    }
+}
